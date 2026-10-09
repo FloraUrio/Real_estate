@@ -21,3 +21,74 @@
         </list>
     </field>         
     </record>
+
+<record id = "view_estate_property_kanban" model="ir.ui.view">
+    <field name ="name">estate.property.kanban.view</field>
+    <field name ="model">estate.property</field>
+    <field name="arch" type ="xml">
+       
+<kanban default_group_by="state">
+       <templates>
+            <t t-name="card_box">
+        <field name="name"/>
+        <field name="expected_price"/>
+        <field name="selling_price"/>
+        <field name="living_area"/>
+        <field name="date_availability"/>
+        <field name="postcode"/>
+            </t>
+       </templates> 
+      </kanban>
+    </field>
+</record>
+
+<record id = "view_estate_property_form" model="ir.ui.view">
+    <field name ="name">estate.property.form.view</field>
+    <field name ="model">estate.property</field>
+    <field name="arch" type ="xml"> 
+       <form>
+         <header>
+         <button type="object" string="Sold" name="action_sold"/>
+         <button type="object" string="Cancel" name="action_cancel"/>
+         <field name="state" widget="statusbar"/>
+        </header>
+
+       <sheet>
+       <group>
+        <field name="name"/>
+        <field name="expected_price"/>
+        <field name="selling_price"/>
+        <field name="date_availability"/>
+        </group>
+
+        <group>
+        <field name="bedrooms"/>
+        <field name="living_area"/>
+        </group>
+
+       <notebook>
+       <page string="info">
+         <group>
+         <field name="description"/>
+         </group>
+        </page> 
+
+        <page string="deco">
+         <group>
+         <field name="garden"/>
+         <field name="garden_area"/>
+         <field name="garden_orientation"/>
+         </group>
+         </page>
+
+         <page string = "extra">
+            <field name="garage"/>
+            <field name="garage"/>
+         </page>
+         </notebook>
+        </sheet>
+        </form>
+    </field>   
+       
+    </record>
+</odoo>
